@@ -26,6 +26,7 @@ while True:
             new_user = input("input new name for user: ")
             new_password = input("input new password: ")
             write(new_user, new_password)
+            break
         else:
             print("canceling...")
             print("Done!")
