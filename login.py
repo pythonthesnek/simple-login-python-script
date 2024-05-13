@@ -1,5 +1,8 @@
 import hashlib
 
+h = hashlib.new("SHA256")
+password_hash = h.hexdigest()
+
 def read():
     with open("accounts.txt") as file:
         for line in file:
@@ -24,7 +27,9 @@ while True:
         create_user = input("user not found in the database. Do you want to create a new user? [y/n]")
         if create_user == "y":
             new_user = input("input new name for user: ")
+            h.update(new_user.encode())
             new_password = input("input new password: ")
+            h.update(new_password.encode())
             write(new_user, new_password)
             break
         else:
