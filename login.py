@@ -19,10 +19,10 @@ read()
 
 while True:
 
-    query_user = input("Type user or create account: ")
-    h = hashlib.new("SHA256")
-    h.update(query_user.encode())
+    query_user = input("enter username or create account: ")
     query_user_hash = h.hexdigest()
+    h = hashlib.new("SHA256")
+    
 
     if query_user_hash in username[0]:
         print("user found in the database!")
