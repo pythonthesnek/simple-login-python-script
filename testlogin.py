@@ -19,10 +19,11 @@ read()
 
 while True:
     query_user = input("Type user or create account: ")
+    hash_query_user = h.hexdigest()
 
-    if query_user in username[0]:
+    if hash_query_user in username[0]:
         print("user found in the database!")
-    else:
+    elif hash_query_user not in username[0]:
         create_user = input("user not found in the database. Do you want to create a new user? [y/n]")
         if create_user == "y":
             new_user = input("input new name for user: ")
@@ -31,10 +32,24 @@ while True:
             new_password = input("input new password: ")
             h.update(new_password.encode())
             new_password_hash = h.hexdigest()
-            write(new_user, new_password)
             write(new_user_hash, new_password_hash)
             break
         else:
             print("canceling...")
             print("Done!")
-            break 
+            break
+    
+    query_password = input("Type password for " + query_user + ":")
+    h = hashlib.new("SHA256")
+    h.update(query_password.encode())
+    query_password_hash = h.hexdigest()
+
+    if query_password_hash in username[1]:
+        print("access granted!")
+        break
+    elif query_password_hash not in username[1]:
+        print("access denied!")
+        break
+    
+    else:
+        break
