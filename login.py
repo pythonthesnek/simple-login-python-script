@@ -43,10 +43,12 @@ while True:
             break
     
     query_password = input("Type password for " + query_user + ":")
+    h.update(query_password.encode())
+    query_password_hash = h.hexdigest()
 
-    if query_password in username[1]:
+    if query_password_hash in username[1]:
         print("access granted!")
-    elif query_password not in username[1]:
+    elif query_password_hash not in username[1]:
         print("access denied!")
         break
     
