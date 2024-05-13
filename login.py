@@ -31,7 +31,7 @@ while True:
             new_password = input("input new password: ")
             h.update(new_password.encode())
             new_password_hash = h.hexdigest()
-            write(new_user, new_password)
+            write(new_user_hash, new_password_hash)
             break
         else:
             print("canceling...")
