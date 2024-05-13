@@ -1,7 +1,5 @@
 import hashlib
 
-
-
 def read():
     with open("accounts.txt") as file:
         for line in file:
@@ -25,7 +23,9 @@ while True:
     elif query_user not in username[0]:
         create_user = input("user not found in the database. Do you want to create a new user? [y/n]")
         if create_user == "y":
-            pass
+            new_user = input("input new name for user: ")
+            new_password = input("input new password: ")
+            write(new_user, new_password)
         else:
             print("canceling...")
             print("Done!")
