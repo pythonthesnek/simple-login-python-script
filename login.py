@@ -8,9 +8,7 @@ def read():
             line = line.rstrip("\n")
             global username
             username = line.split("/")
-            user = username[0]
-            password = username[1]
-
+            
 def write(user, passwordname):
     with open("accounts.txt", "a") as file:
         file.write("\n" + user + "/" + passwordname)
