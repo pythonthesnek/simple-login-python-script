@@ -20,8 +20,10 @@ read()
 while True:
 
     query_user = input("enter username or create account: ")
+    h.update(query_user.encode())
     query_user_hash = h.hexdigest()
     h = hashlib.new("SHA256")
+    #print(query_user_hash)
     
 
     if query_user_hash in username[0]:
